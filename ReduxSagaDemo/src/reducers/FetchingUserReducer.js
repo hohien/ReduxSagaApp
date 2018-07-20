@@ -5,12 +5,7 @@ const defaultUserList = [];
 export default fetchingUsers =(state = defaultUserList,action)=>{
 
     switch(action.type){
-        case TypeAction.FETCHING_USERS_REQUEST:{
-            
-            return state;
-        }
         case TypeAction.FETCHING_USERS_SUCCESS:{
-           
             return action.userList;
         }
         case TypeAction.FETCHING_USERS_FAILURE:{

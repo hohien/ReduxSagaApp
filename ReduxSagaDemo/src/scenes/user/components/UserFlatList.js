@@ -12,7 +12,6 @@ import {connect} from 'react-redux';
 
 class UserFlatList extends Component {
 
-
     render() {
         return (
             <FlatList
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
     flatList: {
         flex: 100,
         backgroundColor: "white",
-  },
+    },
 });
 
 function mapStateToProps (state){

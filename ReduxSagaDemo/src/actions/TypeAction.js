@@ -5,6 +5,7 @@ export default {
     FETCHING_USERS_REQUEST : "fetching_users_request",
 
     SEARCH_USERS_REQUEST   : "search_users_request",
-    SEARCH_USERS_RESULT    : "search_users_result",
+    SEARCH_USERS           : "search_users",
     SEARCH_USERS_STATE     : "search_users_state",
+    SEARCH_USERS_QUERY     : "search_users_query",
 }

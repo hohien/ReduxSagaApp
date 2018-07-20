@@ -11,6 +11,7 @@ import {
 import{
     searchUsersRequest
 } from '../actions/SearchUsersAction';
+
 import {getUsersApi} from '../apis/UsersApi';
 
 function* fetchingUserCallBack(){

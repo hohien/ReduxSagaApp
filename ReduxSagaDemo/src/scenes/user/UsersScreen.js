@@ -4,9 +4,13 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 
 import UserFlatList from './components/UserFlatList';
 import SearchUserBar from './components/SearchUserBar';
+import {fetchingUsersRequest} from '../../actions/FetchingUserAction';
+import { connect } from 'react-redux';
+class UsersScreen extends Component {
 
-export default class UsersScreen extends Component {
-
+  componentDidMount(){
+    this.props.fetchingUsersRequest();
+  }
   
   render() {
     return (
@@ -25,3 +29,8 @@ const styles = StyleSheet.create({
   },
 
 });
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default  connect(mapStateToProps,{fetchingUsersRequest}) (UsersScreen);

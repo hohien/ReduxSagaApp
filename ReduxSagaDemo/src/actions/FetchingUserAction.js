@@ -13,7 +13,6 @@ export const fetchingUsersSuccess = (userList) =>{
         type: TypeAction.FETCHING_USERS_SUCCESS,
         userList
     }
-
 }
 
 export const fetchingUsersFailure = (error) =>{
