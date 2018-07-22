@@ -1,24 +1,37 @@
 import TypeAction from '../actions/TypeAction';
 import {takeLatest,call,takeEvery,put,select} from 'redux-saga/effects';
 
-import {searchUsers,setQueryUserState,setSearchUsersState} from '../actions/SearchUsersAction';
+import {setSearchUserResult,setSearchUsersState} from '../actions/SearchUsersAction';
 
+import _ from 'lodash';
 
 function  getUserListState (state) {
     return state.userList;
 } 
 
-function * searchUsersCallback(action){
+function filterUser (query,userList){
+    query = query.replace(/\s+/g, '').toLowerCase().trim();
+    if (query.length === 0){
+        return userList?userList:[];
+    }
+    return _.filter(userList,user =>{
+        let condition = user.name.last+user.name.name+user.email;
+        condition = condition.toLowerCase();
+        return condition.contains(query);
+    });
+}
 
-    yield put(setQueryUserState(action.query));
+function * searchUsersCallback(action){
 
     yield put(setSearchUsersState(true));
     
     let allUsers = yield select(getUserListState);
-
-    yield put(searchUsers(action.query,allUsers));
     
+    let searchUserResult = filterUser(action.query,allUsers);
+
     yield put(setSearchUsersState(false));
+    
+    yield put(setSearchUserResult(searchUserResult));
 }
 
 export default function* searchingUserListener(){

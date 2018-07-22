@@ -7,19 +7,19 @@ import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 
 import {searchUsersRequest}from '../../../actions/SearchUsersAction';
+import {sortingUsersRequest, INCREASE} from '../../../actions/SortingUsersActions';
 
 class SearchUserBar extends Component {
 
     _onChangeText = (text)=>{
-        if (this.props.isSearchingUsers === false){
-            this.props.searchUsersRequest(text);
-        }
+        this.props.searchUsersRequest(text);
     }
-    
+
     render() {
         return (
             <View style ={{width:Dimensions.get("window").width}}>
                 <SearchBar
+                    lightTheme
                     loadingIcon = { { color: '#86939e' }}
                     clearIcon
                     showLoadingIcon ={this.props.isSearchingUsers}
@@ -44,4 +44,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, {searchUsersRequest})(SearchUserBar);
+export default connect(mapStateToProps, {sortingUsersRequest,searchUsersRequest})(SearchUserBar);

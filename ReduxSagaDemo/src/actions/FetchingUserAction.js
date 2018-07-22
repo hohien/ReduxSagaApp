@@ -1,11 +1,9 @@
 import TypeAction from './TypeAction';
 
-export const fetchingUsersRequest = (typeSort)=>{
+export const fetchingUsersRequest = ()=>{
     return{
-        type:TypeAction.FETCHING_USERS_REQUEST,
-        typeSort: typeSort
+        type:TypeAction.FETCHING_USERS_REQUEST
     }
-
 }
 
 export const fetchingUsersSuccess = (userList) =>{

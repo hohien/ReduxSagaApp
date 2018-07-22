@@ -1,10 +1,10 @@
 
 import TypeAction from '../actions/TypeAction';
 
-const isSearchingStateDefault = "";
+const queryDefault = "";
 
-export default searchUserQueryState = (state = isSearchingStateDefault , action )=>{
-    if (action.type === TypeAction.SEARCH_USERS_QUERY){
+export default searchUserQueryState = (state = queryDefault , action )=>{
+    if (action.type === TypeAction.SEARCH_USERS_REQUEST){
         return action.query;
     }
     return state;

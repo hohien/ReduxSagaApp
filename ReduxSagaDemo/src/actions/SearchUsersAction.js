@@ -9,11 +9,10 @@ export const searchUsersRequest =(query)=>{
     }
 }
 
-export const searchUsers = (query, userList) =>{
+export const setSearchUserResult = (searchUserResult) =>{
     return {
-        type:TypeAction.SEARCH_USERS,
-        query,
-        userList
+        type:TypeAction.SEARCH_USERS_RESULT,
+        searchUserResult
     }
 }
 

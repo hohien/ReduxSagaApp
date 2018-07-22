@@ -4,12 +4,16 @@ import {call,all,fork} from 'redux-saga/effects';
 import fetchingUsersListener from './FetchingUserListener';
 import searchUserListener from './SearchingUserListener';
 
+import sortingUserListener from './SortingUserList';
+
+import fetchingSuccess from './FetchingUserSuccess';
+
 export default function* (){
        
-        yield [
-                call(fetchingUsersListener),
-                call(searchUserListener),
-        ];
-        
-        
+        yield all([
+                fork(fetchingUsersListener),
+                fetchingSuccess(),
+                sortingUserListener(),
+                searchUserListener(),
+        ]);
 }

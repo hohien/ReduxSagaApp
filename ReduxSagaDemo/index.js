@@ -17,7 +17,7 @@ import store from './src/store/index';
 const App = ()=>{
 
     return(
-        <Provider store ={store}>
+        <Provider store ={store()}>
             <UsersScreen />
         </Provider>
     );

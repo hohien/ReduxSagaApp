@@ -1,11 +1,16 @@
 
 import {combineReducers} from 'redux';
+
 import fetchingUsers from './FetchingUserReducer';
 import fetchingUserError from './FetchingUserError';
 import fetchingUserState from './FetchingUserState';
+
 import searchUserState from "./SearchUserState";
 import searchUsers from './SearchUserReducer';
-import searchUserQuery from './SearchUserQuery';
+import searchUsersQuery from './SearchUserQuery';
+
+import sortingUsersState from "./SortingUserState";
+import sortingUsersType from './SortingUserType';
 
 export default combineReducers({
 
@@ -13,7 +18,11 @@ export default combineReducers({
     fetchingUsersError  :fetchingUserError,
     userList            :fetchingUsers,
 
-    searchUserQuery     :searchUserQuery,
+    searchUserQuery     :searchUsersQuery,
     isSearchingUsers    :searchUserState,
-    searchingUserResult :searchUsers,
+    searchUserResult    :searchUsers,
+
+    isShortingUsers     :sortingUsersState,
+    sortingUsersType    :sortingUsersType
+    
 });
