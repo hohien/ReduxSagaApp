@@ -11,9 +11,10 @@ import fetchingSuccess from './FetchingUserSuccess';
 export default function* (){
        
         yield all([
-                fork(fetchingUsersListener),
+                searchUserListener(),
                 fetchingSuccess(),
                 sortingUserListener(),
-                searchUserListener(),
+                fork(fetchingUsersListener),
+
         ]);
 }

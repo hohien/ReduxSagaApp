@@ -15,23 +15,25 @@ function filterUser (query,userList){
         return userList?userList:[];
     }
     return _.filter(userList,user =>{
-        let condition = user.name.last+user.name.name+user.email;
+        let condition = user.name.last+user.name.first+user.email;
         condition = condition.toLowerCase();
-        return condition.contains(query);
+        return condition.includes(query);
     });
 }
 
 function * searchUsersCallback(action){
-
+    console.log(`searchUsersCallback ${action}`);
     yield put(setSearchUsersState(true));
     
     let allUsers = yield select(getUserListState);
     
     let searchUserResult = filterUser(action.query,allUsers);
 
+    yield put(setSearchUserResult(searchUserResult));
+
     yield put(setSearchUsersState(false));
     
-    yield put(setSearchUserResult(searchUserResult));
+    
 }
 
 export default function* searchingUserListener(){

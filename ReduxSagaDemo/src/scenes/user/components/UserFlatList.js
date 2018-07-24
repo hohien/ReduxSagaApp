@@ -14,8 +14,12 @@ import {connect} from 'react-redux';
 
 class UserFlatList extends Component {
 
-    _onRefresh(){
+    _onRefresh = ()=>{
         this.props.fetchingUsersRequest();
+    }
+
+    _onPressUserItem = (user,index)=>{
+        this.props.navigation.navigate()
     }
 
     componentDidMount(){
@@ -32,6 +36,7 @@ class UserFlatList extends Component {
                     renderItem ={({item,index})=> {
                         return (
                             <UserItem 
+                                onPressUserItem = {this._onPressUserItem}
                                 user = {item}
                                 index = {index}
                             />
@@ -41,7 +46,7 @@ class UserFlatList extends Component {
                     keyExtractor ={(item,index)=> index.toString()}
                     refreshControl = {
                         <RefreshControl 
-                            onRefresh ={this._onRefresh.bind(this)}
+                            onRefresh ={this._onRefresh}
                             refreshing ={this.props.isRefreshing}/>
                     }
                 />

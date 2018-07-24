@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 
 import {searchUsersRequest}from '../../../actions/SearchUsersAction';
-import {sortingUsersRequest, INCREASE} from '../../../actions/SortingUsersActions';
 
 class SearchUserBar extends Component {
 
@@ -28,11 +27,11 @@ class SearchUserBar extends Component {
                     containerStyle ={{backgroundColor:"white"}}
                     value = {this.props.query}
                     onChangeText ={this._onChangeText}
-                />                
+                />
             </View>
 
         );
-  }
+    }
 }
 
 const mapStateToProps = (state) => {
@@ -44,4 +43,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, {sortingUsersRequest,searchUsersRequest})(SearchUserBar);
+export default connect(mapStateToProps, {searchUsersRequest})(SearchUserBar);

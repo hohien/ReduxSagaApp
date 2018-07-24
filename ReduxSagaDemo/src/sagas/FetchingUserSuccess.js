@@ -12,7 +12,6 @@ function * onFetchingUserSuccessCallback(action){
         let query = yield select(getUserQueryState);
         yield put(searchUsersRequest(query));
     }
-    
 }
 
 export default function* fetchingUserSuccessListener(){

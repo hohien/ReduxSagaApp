@@ -22,6 +22,7 @@ function* fetchingUserCallBack(){
     } finally {
         yield put(fetchingUsersState(false));
     }
+
 }
 
 
