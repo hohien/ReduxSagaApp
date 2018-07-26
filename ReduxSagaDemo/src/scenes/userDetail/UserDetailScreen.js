@@ -3,7 +3,7 @@ import { View, Text ,StyleSheet} from 'react-native'
 
 import { connect } from 'react-redux'
 
-export class UserDetailScreen extends Component {
+class UserDetailScreen extends Component {
 
   render() {
     return (

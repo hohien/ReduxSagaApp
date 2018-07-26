@@ -5,11 +5,12 @@ import {Avatar} from 'react-native-elements';
 
 export default class UserItem extends Component {
 
-
-
+  _onClickUserItem = ()=>{
+    this.props.onUserItemPress(this.props.user,this.props.index);
+  }
   render() {
     return (
-      <TouchableOpacity onPress={this.props._onPressUserItem(this.props.user,this.props.index)}>
+      <TouchableOpacity onPress={this._onClickUserItem}>
         <View style={styles.container}>
               <Avatar 
                   size = "small"

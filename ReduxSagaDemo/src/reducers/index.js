@@ -23,6 +23,7 @@ export default combineReducers({
     searchUserResult    :searchUsers,
 
     isShortingUsers     :sortingUsersState,
-    sortingUsersType    :sortingUsersType
-    
+    sortingUsersType    :sortingUsersType,
+
+
 });

@@ -4,11 +4,11 @@ import React, {Component} from 'react';
 import {Platform,RefreshControl,FlatList, StyleSheet, Text, View} from 'react-native';
 
 import UserItem from './UserItem';
-import {
-    ListItem
-} from 'react-native-elements'
+
+import {withNavigation} from 'react-navigation';
 
 import {fetchingUsersRequest} from '../../../actions/FetchingUserAction';
+
 
 import {connect} from 'react-redux';
 
@@ -18,25 +18,25 @@ class UserFlatList extends Component {
         this.props.fetchingUsersRequest();
     }
 
-    _onPressUserItem = (user,index)=>{
-        this.props.navigation.navigate()
+    _onUserItemPress =(user,index)=>{
+        
+        this.props.navigation.navigate("UserDetailScreen",{user,index});
     }
-
+    
     componentDidMount(){
-
+        
         this.props.fetchingUsersRequest();
     }
-
+    
     render() {
         return (
-        
             <View style={styles.container}>
                 <FlatList
                     style ={styles.flatList}
                     renderItem ={({item,index})=> {
                         return (
                             <UserItem 
-                                onPressUserItem = {this._onPressUserItem}
+                                onUserItemPress = {this._onUserItemPress}
                                 user = {item}
                                 index = {index}
                             />
@@ -45,7 +45,7 @@ class UserFlatList extends Component {
                     data ={this.props.userData}
                     keyExtractor ={(item,index)=> index.toString()}
                     refreshControl = {
-                        <RefreshControl 
+                        <RefreshControl
                             onRefresh ={this._onRefresh}
                             refreshing ={this.props.isRefreshing}/>
                     }
@@ -64,15 +64,14 @@ const styles = StyleSheet.create({
     flatList:{
         flex:1
     },
-    quality:{
-        alignItems: 'center',
-    }
+
 });
 
 function mapStateToProps (state){
     return {
         userData    : state.searchUserResult,
-        isRefreshing: state.isFetchingUsers
+        isRefreshing: state.isFetchingUsers,
+
     }
 }
-export default connect(mapStateToProps,{fetchingUsersRequest}) (UserFlatList);
+export default connect(mapStateToProps,{fetchingUsersRequest}) (withNavigation(UserFlatList));

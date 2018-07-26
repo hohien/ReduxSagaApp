@@ -10,5 +10,6 @@ export default {
 
     SORT_USERS_REQUEST     : "sort_users_request",
     SORT_USERS_STATE       : "sort_users_state",
-    SORT_USERS_RESULT      : "sort_users_result"
+    SORT_USERS_RESULT      : "sort_users_result",
+    
 }
